@@ -49,7 +49,7 @@ Config_init() {
   Config_bbCompatibility := False
   Config_borderWidth     := 0
   Config_borderPadding   := -1
-  Config_showTaskBar     := False
+  Config_showTaskBar     := True
   Config_showBorder      := True
   Config_selBorderColor  := ""
   Config_scalingFactor   := 1   ;; Undocumented. The value is retrieved by `Config_getSystemSettings()` from the registry.
@@ -99,8 +99,9 @@ Config_init() {
   Config_rule_#16  := "MozillaWindowClass;.*Mozilla Firefox;;1;0;0;0;1;0;"
   Config_rule_#17  := "MozillaDialogClass;.*;;1;0;0;1;1;0;"
   Config_rule_#18  := ".*;Everything;;0;0;1;1;0;0;"
+  Config_rule_#19  := ".*;iTunes;;0;0;1;1;0;0;"
   ;Config_rule_#18  := "ApplicationFrameWindow;.*Edge;;1;0;0;0;1;0;"
-  Config_ruleCount := 18  ;; This variable has to be set to the total number of active rules above.
+  Config_ruleCount := 19 ;; This variable has to be set to the total number of active rules above.
 
   ;; Configuration management
   Config_autoSaveSession := "auto"                ;; "off" | "auto" | "ask"

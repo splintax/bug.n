@@ -18,7 +18,7 @@ PrintScreen::Send {PrintScreen}
 ; mouse button can be mapped to the Windows key for added convenience.
 #WheelUp::Send {Volume_Up}
 #WheelDown:: Send {Volume_Down}
-#MButton::Send ^!p
+#LButton::Send ^!p
 
 Toast(Text) {
   Menu Tray, NoIcon
