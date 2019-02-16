@@ -26,40 +26,40 @@ Toast(Text) {
   TrayTip,, %Text%, 1
 }
 
-ActivateExe(ExeName) {
-  WinGetTitle, WindowTitle, ahk_exe %ExeName%
-  WinActivate, ahk_exe %ExeName%
-  Toast(WindowTitle)
-}
-
-ActivateID(WindowID) {
+Activate(WindowID) {
   WinGetTitle, WindowTitle, ahk_id %WindowID%
   WinActivate, ahk_id %WindowID%
   Toast(WindowTitle)
 }
 
-^e::
-Input, SingleKey, L1
-if (SingleKey = "t")
-  ActivateExe("putty.exe")
-else if (SingleKey = "n")
-  ActivateExe("notepad++.exe")
-else if (SingleKey = "f")
-  ActivateExe("firefox.exe")
-else if (SingleKey = "v")
-  ActivateExe("foobar2000.exe")
-else {
-  SetTitleMatchMode RegEx
-  WinGet, MatchingWindows, List, ahk_exe i)\\%SingleKey%[^\\]*$
+NextMatchingWindow(WinTitle) {
+  WinGet, MatchingWindows, List, %WinTitle%
+  ActiveIndex := 0
   Loop %MatchingWindows% {
     WindowID := MatchingWindows%A_Index%
     Active := WinActive("ahk_id " . WindowID)
     WinGetTitle, WindowTitle, ahk_id %WindowID%
     if (WindowTitle != "" and WindowTitle != "Program Manager" and not Active) {
-      ActivateID(WindowID)
-      return
+      return WindowID
     }
   }
-  Toast("No windows launched by a process starting with '" . SingleKey . "'.")
+  Toast("No windows matching '" . WinTitle . "'.")
+}
+
+^e::
+Input, SingleKey, L1
+if (SingleKey = "t")
+  Activate(NextMatchingWindow("ahk_exe putty.exe"))
+else if (SingleKey = "f")
+  Activate(NextMatchingWindow("ahk_exe firefox.exe"))
+else if (SingleKey = "v")
+  Activate(NextMatchingWindow("ahk_exe foobar2000.exe"))
+else {
+  SetTitleMatchMode RegEx
+  WindowID := NextMatchingWindow("ahk_exe i)\\" . SingleKey . "[^\\]*$")
+  if (WindowID)
+    Activate(WindowID)
+  else
+    Toast("No windows launched by a process starting with '" . SingleKey . "'.")
 }
 return
