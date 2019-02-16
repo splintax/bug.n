@@ -29,7 +29,7 @@ Toast(Text) {
 Activate(WindowID) {
   WinGetTitle, WindowTitle, ahk_id %WindowID%
   WinActivate, ahk_id %WindowID%
-  Toast(WindowTitle)
+  ;Toast(WindowTitle)
 }
 
 NextMatchingWindow(WinTitle) {

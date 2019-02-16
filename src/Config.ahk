@@ -440,7 +440,8 @@ Config_UI_saveSession() {
 !8::View_moveWindow(8)
 !9::View_moveWindow(9)
 !0::View_moveWindow(10)
-!BackSpace::View_toggleStackArea()
+;Removed because it interfered with Meta-Backspace in PuTTY.
+;!BackSpace::View_toggleStackArea()
 
 ;; Window debugging
 #^i::Debug_logViewWindowList()
