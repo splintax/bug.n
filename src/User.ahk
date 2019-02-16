@@ -53,9 +53,9 @@ else {
   WinGet, MatchingWindows, List, ahk_exe i)\\%SingleKey%[^\\]*$
   Loop %MatchingWindows% {
     WindowID := MatchingWindows%A_Index%
-    Inactive := WinActive(ahk_id %WindowID%) = 0
+    Active := WinActive("ahk_id " . WindowID)
     WinGetTitle, WindowTitle, ahk_id %WindowID%
-    if (WindowTitle != "" and WindowTitle != "Program Manager" and Inactive) {
+    if (WindowTitle != "" and WindowTitle != "Program Manager" and not Active) {
       ActivateID(WindowID)
       return
     }
