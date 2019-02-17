@@ -81,10 +81,10 @@ Config_init() {
   Config_viewMargins        := "0;0;0;0"
 
   ;; Config_rule_#<i> := "<class>;<title>;<function name>;<is managed>;<m>;<tags>;<is floating>;<is decorated>;<hide title>;<action>"
-  Config_rule_#1   := ".*;.*;;1;0;0;0;0;0;"
+  Config_rule_#1   := ".*;.*;;1;0;0;0;1;0;"
   Config_rule_#2   := ".*;.*;Window_isChild;0;0;0;1;1;1;"
   Config_rule_#3   := ".*;.*;Window_isPopup;0;0;0;1;1;1;"
-  Config_rule_#4   := "QWidget;.*;;1;0;0;0;0;0;"
+  Config_rule_#4   := "QWidget;.*;;1;0;0;1;0;0;"
   Config_rule_#5   := "SWT_Window0;.*;;1;0;0;0;0;0;"
   Config_rule_#6   := "Xming;.*;;1;0;0;0;0;0;"
   Config_rule_#7   := "MsiDialog(No)?CloseClass;.*;;1;0;0;1;1;0;"
@@ -428,8 +428,9 @@ Config_UI_saveSession() {
 #+x::Manager_maximizeWindow()
 #i::Manager_getWindowInfo()
 #+i::Manager_getWindowList()
-!Down::View_moveWindow(0, +1)
-!Up::View_moveWindow(0, -1)
+;Removed cause !Up conflicts with Windows Explorer.
+;!Down::View_moveWindow(0, +1)
+;!Up::View_moveWindow(0, -1)
 !+Enter::Manager_maximizeWindow()
 !1::View_moveWindow(1)
 !2::View_moveWindow(2)
