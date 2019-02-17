@@ -50,6 +50,10 @@ NextMatchingWindow(WinTitle) {
 Input, SingleKey, L1
 if (SingleKey = "x")
   Send !{F4}
+else if (SingleKey = "2")
+  Activate(NextMatchingWindow("ahk_exe firefox.exe"))
+else if (SingleKey = "3")
+  Activate(NextMatchingWindow("ahk_exe putty.exe"))
 else {
   SetTitleMatchMode RegEx
   WindowID := NextMatchingWindow("ahk_exe i)\\" . SingleKey . "[^\\]*$")
