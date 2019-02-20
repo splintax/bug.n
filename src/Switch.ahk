@@ -1,5 +1,3 @@
-#SingleInstance force
-
 CapsLock::Ctrl
 
 ; This is convenient during development.
@@ -75,3 +73,63 @@ if (SingleKey = "x") {
   ActivateNextMatchingWindow("ahk_exe i)\\" . SingleKey . "[^\\]*$")
 }
 return
+
+; A bunch of shortcuts to get Vim-like navigation in Acrobat DC.
+; Credit: https://superuser.com/questions/40909/vim-like-navigation-n-adobe-acrobat-reader/569921#569921
+; TODO: Figure out why this breaks when moved to another file.
+
+#IfWinActive ahk_class AcrobatSDIWindow
+g::Send ^+n
+return
+
+#IfWinActive ahk_class AcrobatSDIWindow
++g::Send {End}
+return
+
+#IfWinActive ahk_class AcrobatSDIWindow
+h::
+Loop, 10 {
+  Send {Left}
+}
+return
+
+#IfWinActive ahk_class AcrobatSDIWindow
+l::
+Loop, 10 {
+  Send {Right}
+}
+return
+
+#IfWinActive ahk_class AcrobatSDIWindow
+j::
+Loop, 10 {
+  Send {Down}
+}
+return
+
+#IfWinActive ahk_class AcrobatSDIWindow
+k::
+Loop, 10 {
+  Send {Up}
+}
+return
+
+#IfWinActive ahk_class AcrobatSDIWindow
+d::
+Loop, 60 {
+  Send {Down}
+}
+return
+
+#IfWinActive ahk_class AcrobatSDIWindow
+u::
+Loop, 60 {
+  Send {Up}
+}
+return
+
+#IfWinActive ahk_class AcrobatSDIWindow
++j::Send ^{Down}
+
+#IfWinActive ahk_class AcrobatSDIWindow
++k::Send ^{Up}
