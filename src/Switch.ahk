@@ -8,6 +8,11 @@ MsgBox Reloading configuration.
 Reload
 return
 
+; My keyboard doesn't have a right Windows key, just an AppsKey. So that's
+; remapped to Windows, and the original function is accessible with a modifier.
+AppsKey::RWin
+^AppsKey::AppsKey
+
 ; Add custom volume keys to get around the fact that the Microsoft Sculpt
 ; Ergonomic Desktop Keyboard can't use the media keys and F-keys simultaenously.
 PrintScreen & F12::Send {Volume_Up}
