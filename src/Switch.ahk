@@ -40,8 +40,9 @@ ActivateNextMatchingWindow(WinTitleExpression) {
     ; This is just a hack to avoid various dodgy and invisible windows that
     ; you probably don't want to activate.
     WinGetTitle, WindowTitle, ahk_id %WindowID%
+    WinGet, ProcessName, ProcessName, ahk_id %WindowID%
     ; If the conditions are satisfied, activate the window.
-    if (WindowTitle != "" and WindowTitle != "Program Manager" and not Active) {
+    if (WindowTitle != "" and WindowTitle != "Program Manager" and ProcessName != "ApplicationFrameHost.exe" and not Active) {
       WinActivate, ahk_id %WindowID%
       return
     } ; Otherwise, the loop continues for the next matching window.
