@@ -99,6 +99,7 @@ Config_init() {
   Config_rule_#16  := "MozillaWindowClass;.*Mozilla Firefox;;1;0;0;0;1;0;"
   Config_rule_#17  := "MozillaDialogClass;.*;;1;0;0;1;1;0;"
   Config_rule_#18  := ".*;Everything;;0;0;1;1;0;0;"
+  Config_rule_#18  := ".*;EATMonitor;;0;0;1;1;0;0;"
   Config_rule_#19  := ".*;iTunes;;0;0;1;1;0;0;"
   ;Config_rule_#18  := "ApplicationFrameWindow;.*Edge;;1;0;0;0;1;0;"
   Config_ruleCount := 19 ;; This variable has to be set to the total number of active rules above.
