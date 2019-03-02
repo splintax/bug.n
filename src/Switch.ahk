@@ -15,14 +15,33 @@ AppsKey::RWin
 PrintScreen & F12::Send {Volume_Up}
 PrintScreen & F11::Send {Volume_Down}
 PrintScreen & F10::Send {Volume_Mute}
+PrintScreen & F9::Send ^{F9} ; pause foobar2000
+PrintScreen & F8::Send ^{F8} ; activate foobar2000
 PrintScreen::Send {PrintScreen}
 !PrintScreen::Send !{PrintScreen}
 
 ; Use the scroll wheel as a volume knob by holding the Windows key. A spare
 ; mouse button can be mapped to the Windows key for added convenience.
 #WheelUp::Send {Volume_Up}
-#WheelDown:: Send {Volume_Down}
-#LButton::Send ^!p
+#WheelDown::Send {Volume_Down}
+#WheelRight::Monitor_activateView(0, 1)
+#WheelLeft::Monitor_activateView(0, -1)
+#LButton::Send ^{F9} ; pause foobar2000
+#RButton::Send ^{F8} ; activate foobar2000
+
+WheelLeft::
+If (A_TimeSincePriorHotkey > 100) {
+  Click
+  Send ^{-}
+}
+return
+
+WheelRight::
+If (A_TimeSincePriorHotkey > 100) {
+  Click
+  Send ^{=}
+}
+return
 
 ; Given an expression of the kind accepted by WinTitle, such as `ahk_exe
 ; putty.exe` (or a regex), activate the first window that matches it.
