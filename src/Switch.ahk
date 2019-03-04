@@ -22,10 +22,10 @@ PrintScreen::Send {PrintScreen}
 
 ; Use the scroll wheel as a volume knob by holding the Windows key. A spare
 ; mouse button can be mapped to the Windows key for added convenience.
-#WheelUp::Send {Volume_Up}
-#WheelDown::Send {Volume_Down}
-#WheelRight::Monitor_activateView(0, 1)
-#WheelLeft::Monitor_activateView(0, -1)
+XButton1 & WheelUp::Send {Volume_Up}
+XButton1 & WheelDown::Send {Volume_Down}
+#WheelDown::Monitor_activateView(0, 1)
+#WheelUp::Monitor_activateView(0, -1)
 #LButton::Send ^{F9} ; pause foobar2000
 #RButton::Send ^{F8} ; activate foobar2000
 
