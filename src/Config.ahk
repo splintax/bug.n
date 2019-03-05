@@ -102,7 +102,9 @@ Config_init() {
   Config_rule_#19  := ".*;EATMonitor;;0;0;1;1;0;0;"
   Config_rule_#20  := ".*;iTunes;;0;0;1;1;0;0;"
   Config_rule_#21  := ".*;Task Manager;;0;0;1;1;0;0;"
-  Config_ruleCount := 21 ;; This variable has to be set to the total number of active rules above.
+  Config_rule_#22  := ".*;Audio Router;;0;0;1;1;0;0;"
+  Config_rule_#23  := ".*;Bitwarden;;0;0;1;1;0;0;"
+  Config_ruleCount := 23 ;; This variable has to be set to the total number of active rules above.
 
   ;; Configuration management
   Config_autoSaveSession := "auto"                ;; "off" | "auto" | "ask"
