@@ -29,6 +29,11 @@ XButton1 & WheelDown::Send {Volume_Down}
 #LButton::Send ^{F9} ; pause foobar2000
 #RButton::Send ^{F8} ; activate foobar2000
 
+; Use the mouse to manage browser tabs by holding the XButton.
+XButton1 & MButton::Send ^{F4}
+XButton1 & LButton::Send ^+{Tab}
+XButton1 & RButton::Send ^{Tab}
+
 WheelLeft::
 If (A_TimeSincePriorHotkey > 100) {
   Click
