@@ -104,7 +104,8 @@ Config_init() {
   Config_rule_#21  := ".*;Task Manager;;0;0;1;1;0;0;"
   Config_rule_#22  := ".*;Audio Router;;0;0;1;1;0;0;"
   Config_rule_#23  := ".*;Bitwarden;;0;0;1;1;0;0;"
-  Config_ruleCount := 23 ;; This variable has to be set to the total number of active rules above.
+  Config_rule_#24  := "Edit;;;1;2;1;0;1;0;" ;; some useless window created by Acrobat Pro
+  Config_ruleCount := 24 ;; This variable has to be set to the total number of active rules above.
 
   ;; Configuration management
   Config_autoSaveSession := "auto"                ;; "off" | "auto" | "ask"
@@ -470,13 +471,15 @@ Config_UI_saveSession() {
 #^Down::View_setLayoutProperty("MY", 0, -1)
 #^Right::View_setLayoutProperty("MX", 0, +1)
 #^Left::View_setLayoutProperty("MX", 0, -1)
-#+Left::View_setLayoutProperty("GapWidth", 0, -2)
-#+Right::View_setLayoutProperty("GapWidth", 0, +2)
+; #+Left::View_setLayoutProperty("GapWidth", 0, -2)
+; #+Right::View_setLayoutProperty("GapWidth", 0, +2)
+; #+Left::Send #{Left}
+; #+Right::Send #{Right}
 #^Backspace::View_resetTileLayout()
 
 ;; View/Tag management
 #+n::View_toggleMargins()
-#BackSpace::Monitor_activateView(-1)
+;#BackSpace::Monitor_activateView(-1)
 #+0::Monitor_setWindowTag(10)
 #1::Monitor_activateView(1)
 #+1::Monitor_setWindowTag(1)

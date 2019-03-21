@@ -1,4 +1,4 @@
-CapsLock::Ctrl
+﻿CapsLock::Ctrl
 
 ; This is convenient during development.
 ^!r::
@@ -33,6 +33,46 @@ XButton1 & WheelDown::Send {Volume_Down}
 XButton1 & MButton::Send ^{F4}
 XButton1 & LButton::Send ^+{Tab}
 XButton1 & RButton::Send ^{Tab}
+
+#k::Keyhistory
+#Delete::Send {Numpad1}
+#End::Send {Numpad2}
+#PgDn::Send {Numpad3}
+#Insert::Send {Numpad4}
+#Home::Send {Numpad5}
+#PgUp::Send {Numpad6}
+#PrintScreen::Send {Numpad7}
+#ScrollLock::Send {Numpad8}
+#Pause::Send {Numpad9}
+#Backspace::Send {Numpad0}
+#\::Send {NumpadDot}
+#F12::Send {NumpadMult}
+#F9::Send {NumpadDiv}
+#F10::Send {NumpadSub}
+#F11::Send {NumpadAdd}
+
+::-p-::– ;; en dash
+::-o-::— ;; em dash
+::<-::←  ;; left arrow
+::->::→  ;; right arrow
+::^o::°  ;; degree symbol
+:*?:^1::¹
+:*?:^2::²
+:*?:^3::³
+:*?:^4::⁴
+:*?:^5::⁵
+:*?:^6::⁶
+:*?:^7::⁷
+:*?:^8::⁸
+:*?:^9::⁹
+:*?:^0::⁰
+:*?:^+::⁺
+:*?:^-::⁻
+:*?:^=::⁼
+:*?:^(::⁽
+:*?:^)::⁾
+:*?:^n::ⁿ
+:*?:^i::ⁱ
 
 WheelLeft::
 If (A_TimeSincePriorHotkey > 100) {
