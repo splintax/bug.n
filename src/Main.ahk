@@ -192,3 +192,4 @@ Return
 #Include View.ahk
 #Include Window.ahk
 #Include Switch.ahk
+#Include Keys.ahk
