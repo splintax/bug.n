@@ -1,24 +1,7 @@
-﻿CapsLock::Ctrl
-
-; This is convenient during development.
-^!r::
-MsgBox Reloading configuration.
-Reload
-return
-
-; My keyboard doesn't have a right Windows key, just an AppsKey. So that's
+﻿; My keyboard doesn't have a right Windows key, just an AppsKey. So that's
 ; remapped to Windows, and the original function is accessible with a modifier.
 AppsKey::RWin
 ^AppsKey::AppsKey
-
-; Add some custom volume keys, because my keyboard doesn't have dedicated ones.
-PrintScreen & F12::Send {Volume_Up}
-PrintScreen & F11::Send {Volume_Down}
-PrintScreen & F10::Send {Volume_Mute}
-PrintScreen & F9::Send ^{F9} ; pause foobar2000
-PrintScreen & F8::Send ^{F8} ; activate foobar2000
-PrintScreen::Send {PrintScreen}
-!PrintScreen::Send !{PrintScreen}
 
 ; Use the scroll wheel as a volume knob by holding the Windows key. A spare
 ; mouse button can be mapped to the Windows key for added convenience.
@@ -39,7 +22,9 @@ XButton1 & RButton::Send ^{Tab}
 ::-o-::—
 ::<-::←
 ::->::→
-::^o::°
+:*?:||^::↑
+:*?:||v::↓
+:*?:^^o::°
 
 ; Superscripts
 :*?:^1::¹
@@ -59,6 +44,9 @@ XButton1 & RButton::Send ^{Tab}
 :*?:^)::⁾
 :*?:^^n::ⁿ
 :*?:^^i::ⁱ
+:*?:..x::×
+:*?:..%::÷
+:*?:+_::±
 
 ; French characters
 :*?:\\a::à
@@ -76,10 +64,13 @@ XButton1 & RButton::Send ^{Tab}
 :*?:^i::î
 :*?:^I::Î
 :*?:..i::ï
+:*?:^o::ô
+:*?:^O::Ô
 :*?:-oe-::œ
 :*?:-OE-::Œ
 :*?:\\u::ù
 :*?:\\U::Ù
+:*?:^u::û
 
 WheelLeft::
 If (A_TimeSincePriorHotkey > 100) {

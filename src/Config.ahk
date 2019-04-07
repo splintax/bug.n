@@ -22,28 +22,29 @@ Config_init() {
   Config_verticalBarPos    := "top"
   Config_barWidth          := "100%"
   Config_singleRowBar      := True
-  Config_spaciousBar       := False
+  Config_spaciousBar       := True
   Config_fontName          := "Lucida Console"
   Config_fontSize          :=
   Config_largeFontSize     := 24
-  Loop, 3 {
-    Config_backColor_#%A_Index% :=
-    Config_foreColor_#%A_Index% :=
-    Config_fontColor_#%A_Index% :=
-  }
+  Config_backColor_#1      := "282828;282828;282828;282828;282828;282828;282828;282828;282828;"
+  Config_foreColor_#1      := "282828;282828;282828;282828;282828;282828;282828;282828;282828;"
+  Config_fontColor_#1      := "fbf1c7;fbf1c7;fbf1c7;fbf1c7;fbf1c7;fbf1c7;fbf1c7;fbf1c7;fbf1c7;"
+  Config_backColor_#2      := "fbf1c7;;;;;;;;282828"
+  Config_foreColor_#2      := "fbf1c7;;;;;;;;98971a"
+  Config_fontColor_#2      := "79740e"
   Config_barTransparency   := "off"
   Config_barCommands       := "Run, explore " Main_docDir ";Monitor_toggleBar();Reload;ExitApp"
-  Config_readinBat         := False
-  Config_readinCpu         := False
+  Config_readinBat         := True
+  Config_readinCpu         := True
   Config_readinDate        := True
   Config_readinDateFormat  := "ddd, dd. MMM. yyyy"
-  Config_readinDiskLoad    := False
-  Config_readinMemoryUsage := False
-  Config_readinNetworkLoad := False
+  Config_readinDiskLoad    := True
+  Config_readinMemoryUsage := True
+  Config_readinNetworkLoad := True
   Config_readinTime        := True
   Config_readinTimeFormat  := "HH:mm"
-  Config_readinVolume      := False
-  Config_readinInterval    := 30000
+  Config_readinVolume      := True
+  Config_readinInterval    := 1000
 
   ;; Windows ui elements
   Config_bbCompatibility := False
@@ -57,7 +58,7 @@ Config_init() {
                                 ;; but is dependant on the setting in the `Display control panel` of Windows under `Appearance and Personalization`.
 
   ;; Window arrangement
-  Config_viewNames          := "1;2;3;4;5;6;7;8;9"
+  Config_viewNames          := "Browse;Code;Work"
   Config_layout_#1          := "[]=;tile"
   Config_layout_#2          := "[M];monocle"
   Config_layout_#3          := "><>;"
@@ -418,96 +419,55 @@ Config_UI_saveSession() {
 
 ;; Key definitions
 ;; Window management
-#Down::View_activateWindow(0, +1)
-#Up::View_activateWindow(0, -1)
-#+Down::View_shuffleWindow(0, +1)
-#+Up::View_shuffleWindow(0, -1)
-#+Enter::View_shuffleWindow(1)
-#c::Manager_closeWindow()
+#n::View_activateWindow(0, +1)
+#e::View_activateWindow(0, -1)
+#^n::View_shuffleWindow(0, +1)
+#^e::View_shuffleWindow(0, -1)
+
+#Tab::View_shuffleWindow(1)
+#^Tab::View_setLayoutProperty("Axis", 0, +2, 1)
+
+#x::Manager_closeWindow()
 #+d::Window_toggleDecor()
 #+f::View_toggleFloatingWindow()
-#+m::Manager_moveWindow()
-#^m::Manager_minimizeWindow()
-#+s::Manager_sizeWindow()
-#+x::Manager_maximizeWindow()
-#i::Manager_getWindowInfo()
-#+i::Manager_getWindowList()
-;Removed cause !Up conflicts with Windows Explorer.
-;!Down::View_moveWindow(0, +1)
-;!Up::View_moveWindow(0, -1)
-!+Enter::Manager_maximizeWindow()
-!1::View_moveWindow(1)
-!2::View_moveWindow(2)
-!3::View_moveWindow(3)
-!4::View_moveWindow(4)
-!5::View_moveWindow(5)
-!6::View_moveWindow(6)
-!7::View_moveWindow(7)
-!8::View_moveWindow(8)
-!9::View_moveWindow(9)
-!0::View_moveWindow(10)
-;Removed because it interfered with Meta-Backspace in PuTTY.
-;!BackSpace::View_toggleStackArea()
 
-;; Window debugging
+#+n::Manager_minimizeWindow()
+#+k::Manager_maximizeWindow()
+
+#?::Manager_getWindowInfo()
+#+i::Manager_getWindowList()
+
+; Window debugging
 #^i::Debug_logViewWindowList()
 #^+i::Debug_logManagedWindowList()
 #^h::Debug_logHelp()
 #^d::Debug_setLogLevel(0, -1)
 #^+d::Debug_setLogLevel(0, +1)
 
-;; Layout management
-#Tab::View_setLayout(-1)
-#f::View_setLayout(3)
-#m::View_setLayout(2)
+; Layout management
 #t::View_setLayout(1)
-#Left::View_setLayoutProperty("MFactor", 0, -0.05)
-#Right::View_setLayoutProperty("MFactor", 0, +0.05)
-#^t::View_setLayoutProperty("Axis", 0, +1, 1)
-#^Enter::View_setLayoutProperty("Axis", 0, +2, 1)
-#^Tab::View_setLayoutProperty("Axis", 0, +1, 2)
-#^+Tab::View_setLayoutProperty("Axis", 0, +1, 3)
+#m::View_setLayout(2)
+; #s::View_setLayout(3)
+
+#h::View_setLayoutProperty("MFactor", 0, -0.1)
+#i::View_setLayoutProperty("MFactor", 0, +0.1)
+
+#r::View_setLayoutProperty("Axis", 0, +1, 1)
+; #^Tab::View_setLayoutProperty("Axis", 0, +1, 2)
+; #^+Tab::View_setLayoutProperty("Axis", 0, +1, 3)
 #^Up::View_setLayoutProperty("MY", 0, +1)
 #^Down::View_setLayoutProperty("MY", 0, -1)
 #^Right::View_setLayoutProperty("MX", 0, +1)
 #^Left::View_setLayoutProperty("MX", 0, -1)
-; #+Left::View_setLayoutProperty("GapWidth", 0, -2)
-; #+Right::View_setLayoutProperty("GapWidth", 0, +2)
-; #+Left::Send #{Left}
-; #+Right::Send #{Right}
-#^Backspace::View_resetTileLayout()
+; #^Backspace::View_resetTileLayout()
 
-;; View/Tag management
-#+n::View_toggleMargins()
-;#BackSpace::Monitor_activateView(-1)
-#+0::Monitor_setWindowTag(10)
-#1::Monitor_activateView(1)
-#+1::Monitor_setWindowTag(1)
-#^1::Monitor_toggleWindowTag(1)
-#2::Monitor_activateView(2)
-#+2::Monitor_setWindowTag(2)
-#^2::Monitor_toggleWindowTag(2)
-#3::Monitor_activateView(3)
-#+3::Monitor_setWindowTag(3)
-#^3::Monitor_toggleWindowTag(3)
-#4::Monitor_activateView(4)
-#+4::Monitor_setWindowTag(4)
-#^4::Monitor_toggleWindowTag(4)
-#5::Monitor_activateView(5)
-#+5::Monitor_setWindowTag(5)
-#^5::Monitor_toggleWindowTag(5)
-#6::Monitor_activateView(6)
-#+6::Monitor_setWindowTag(6)
-#^6::Monitor_toggleWindowTag(6)
-#7::Monitor_activateView(7)
-#+7::Monitor_setWindowTag(7)
-#^7::Monitor_toggleWindowTag(7)
-#8::Monitor_activateView(8)
-#+8::Monitor_setWindowTag(8)
-#^8::Monitor_toggleWindowTag(8)
-#9::Monitor_activateView(9)
-#+9::Monitor_setWindowTag(9)
-#^9::Monitor_toggleWindowTag(9)
+; View/Tag management
+#q::Monitor_activateView(1)
+#^q::Monitor_setWindowTag(1)
+#w::Monitor_activateView(2)
+#^w::Monitor_setWindowTag(2)
+#f::Monitor_activateView(3)
+#^f::Monitor_setWindowTag(3)
 
 ;; Monitor management
 #.::Manager_activateMonitor(0, +1)
@@ -519,13 +479,11 @@ Config_UI_saveSession() {
 
 ;; GUI management
 #+Space::Monitor_toggleBar()
-#Space::Monitor_toggleTaskBar()
+#^Space::Monitor_toggleTaskBar()
 #y::Bar_toggleCommandGui()
 #+y::Monitor_toggleNotifyIconOverflowWindow()
 !+y::View_traceAreas()
 
 ;; Administration
-#^e::Config_edit()
-#^s::Config_UI_saveSession()
-#^r::Reload
-#^q::ExitApp
+#^Backspace::Reload
+#^x::ExitApp
