@@ -1,9 +1,4 @@
-﻿; My keyboard doesn't have a right Windows key, just an AppsKey. So that's
-; remapped to Windows, and the original function is accessible with a modifier.
-AppsKey::RWin
-^AppsKey::AppsKey
-
-; Use the scroll wheel as a volume knob by holding the Windows key. A spare
+﻿; Use the scroll wheel as a volume knob by holding the Windows key. A spare
 ; mouse button can be mapped to the Windows key for added convenience.
 XButton1 & WheelUp::Send {Volume_Up}
 XButton1 & WheelDown::Send {Volume_Down}
@@ -18,10 +13,10 @@ XButton1 & LButton::Send ^+{Tab}
 XButton1 & RButton::Send ^{Tab}
 
 ; Typography
-::-p-::–
-::-o-::—
-::<-::←
-::->::→
+:*?:--n::–
+:*?:--m::—
+:*?:<--::←
+:*?:-->::→
 :*?:||^::↑
 :*?:||v::↓
 :*?:^^o::°

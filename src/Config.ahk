@@ -29,43 +29,45 @@ Config_init() {
   Config_backColor_#1      := "282828;282828;282828;282828;282828;282828;282828;282828;282828;"
   Config_foreColor_#1      := "282828;282828;282828;282828;282828;282828;282828;282828;282828;"
   Config_fontColor_#1      := "fbf1c7;fbf1c7;fbf1c7;fbf1c7;fbf1c7;fbf1c7;fbf1c7;fbf1c7;fbf1c7;"
-  Config_backColor_#2      := "fbf1c7;;;;;;;;282828"
-  Config_foreColor_#2      := "fbf1c7;;;;;;;;98971a"
-  Config_fontColor_#2      := "79740e"
+  Config_backColor_#2      := "98971a;;;;;;;;282828"
+  Config_foreColor_#2      := "98971a;;;;;;;;98971a"
+  Config_fontColor_#2      := "fbf1c7"
   Config_barTransparency   := "off"
   Config_barCommands       := "Run, explore " Main_docDir ";Monitor_toggleBar();Reload;ExitApp"
-  Config_readinBat         := True
+  Config_readinBat         := False
   Config_readinCpu         := True
   Config_readinDate        := True
   Config_readinDateFormat  := "ddd, dd. MMM. yyyy"
-  Config_readinDiskLoad    := True
+  Config_readinDiskLoad    := False
   Config_readinMemoryUsage := True
-  Config_readinNetworkLoad := True
+  Config_readinNetworkLoad := False
   Config_readinTime        := True
   Config_readinTimeFormat  := "HH:mm"
   Config_readinVolume      := True
   Config_readinInterval    := 1000
 
-  ;; Windows ui elements
+  ; Windows UI elements
   Config_bbCompatibility := False
   Config_borderWidth     := 0
   Config_borderPadding   := -1
   Config_showTaskBar     := True
   Config_showBorder      := True
   Config_selBorderColor  := ""
-  Config_scalingFactor   := 1   ;; Undocumented. The value is retrieved by `Config_getSystemSettings()` from the registry.
-                                ;; It should not be set manually by the user,
-                                ;; but is dependant on the setting in the `Display control panel` of Windows under `Appearance and Personalization`.
+  Config_scalingFactor   := 1   ;; Undocumented; retrieved by `Config_getSystemSettings()` from the registry.
+  ; It should not be set manually by the user, but is dependant on the setting
+  ; in the `Display control panel` of Windows under `Appearance and Personalization`.
 
   ;; Window arrangement
-  Config_viewNames          := "Browse;Code;Work"
+  Config_viewNames          := "General;Code;Legal;Music"
   Config_layout_#1          := "[]=;tile"
-  Config_layout_#2          := "[M];monocle"
-  Config_layout_#3          := "><>;"
-  Config_layoutCount        := 3
+  Config_layout_#2          := "[]=;tile"
+  Config_layout_#3          := "[]=;tile"
+  Config_layout_#4          := "[]=;tile"
+  Config_layoutCount        := 4
   Config_layoutAxis_#1      := 1
-  Config_layoutAxis_#2      := 2
-  Config_layoutAxis_#3      := 2
+  Config_layoutAxis_#2      := 1
+  Config_layoutAxis_#3      := 1
+  Config_layoutAxis_#4      := 1
   Config_layoutGapWidth     := 0
   Config_layoutMFactor      := 0.6
   Config_areaTraceTimeout   := 1000
@@ -82,31 +84,12 @@ Config_init() {
   Config_viewMargins        := "0;0;0;0"
 
   ;; Config_rule_#<i> := "<class>;<title>;<function name>;<is managed>;<m>;<tags>;<is floating>;<is decorated>;<hide title>;<action>"
-  Config_rule_#1   := ".*;.*;;1;0;0;0;1;0;"
-  Config_rule_#2   := ".*;.*;Window_isChild;0;0;0;1;1;1;"
+  Config_rule_#1   := ".*;.*;;1;0;0;1;0;0;"                 ; Float by default.
+  Config_rule_#2   := ".*;.*;Window_isChild;0;0;0;1;1;1;"   ; Don't manage popups.
   Config_rule_#3   := ".*;.*;Window_isPopup;0;0;0;1;1;1;"
-  Config_rule_#4   := "QWidget;.*;;1;0;0;1;0;0;"
-  Config_rule_#5   := "SWT_Window0;.*;;1;0;0;0;0;0;"
-  Config_rule_#6   := "Xming;.*;;1;0;0;0;0;0;"
-  Config_rule_#7   := "MsiDialog(No)?CloseClass;.*;;1;0;0;1;1;0;"
-  Config_rule_#8   := "AdobeFlashPlayerInstaller;.*;;1;0;0;1;0;0;"
-  Config_rule_#9   := "CalcFrame;.*;;1;0;0;1;1;0;"
-  Config_rule_#10  := "CabinetWClass;.*;;1;0;0;0;1;0;"
-  Config_rule_#11  := "OperationStatusWindow;.*;;0;0;0;1;1;0;"
-  Config_rule_#12  := "Chrome_WidgetWin_1;.*;;1;0;0;0;1;0;"
-  Config_rule_#13  := "Chrome_WidgetWin_1;.*;Window_isPopup;0;0;0;1;1;0;"
-  Config_rule_#14  := "Chrome_RenderWidgetHostHWND;.*;;0;0;0;1;1;0;"
-  Config_rule_#15  := "IEFrame;.*Internet Explorer;;1;0;0;0;1;0;"
-  Config_rule_#16  := "MozillaWindowClass;.*Mozilla Firefox;;1;0;0;0;1;0;"
-  Config_rule_#17  := "MozillaDialogClass;.*;;1;0;0;1;1;0;"
-  Config_rule_#18  := ".*;Everything;;0;0;1;1;0;0;"
-  Config_rule_#19  := ".*;EATMonitor;;0;0;1;1;0;0;"
-  Config_rule_#20  := ".*;iTunes;;0;0;1;1;0;0;"
-  Config_rule_#21  := ".*;Task Manager;;0;0;1;1;0;0;"
-  Config_rule_#22  := ".*;Audio Router;;0;0;1;1;0;0;"
-  Config_rule_#23  := ".*;Bitwarden;;0;0;1;1;0;0;"
-  Config_rule_#24  := "Edit;;;1;2;1;0;1;0;" ;; some useless window created by Acrobat Pro
-  Config_ruleCount := 24 ;; This variable has to be set to the total number of active rules above.
+  Config_rule_#4   := "AutoHotkeyGUI;.*;;0;0;0;1;1;1;"      ; Don't manage the bar.
+  Config_rule_#5   := ".*LogiOverlay.*;.*;;0;0;0;1;1;1;"    ; Invisible window.
+  Config_ruleCount := 5 ; This variable has to be set to the total number of active rules above.
 
   ;; Configuration management
   Config_autoSaveSession := "auto"                ;; "off" | "auto" | "ask"
@@ -424,18 +407,22 @@ Config_UI_saveSession() {
 #^n::View_shuffleWindow(0, +1)
 #^e::View_shuffleWindow(0, -1)
 
-#Tab::View_shuffleWindow(1)
-#^Tab::View_setLayoutProperty("Axis", 0, +2, 1)
+#Tab::View_shuffleWindow(1)                     ; swap major window
+#^Tab::View_setLayoutProperty("Axis", 0, +2, 1) ; flip major side
+#+r::View_setLayoutProperty("Axis", 0, +1, 1)   ; rotate major axis
+#^r::View_setLayoutProperty("Axis", 0, +1, 3)   ; rotate minor axis
 
-#x::Manager_closeWindow()
+#h::View_setLayoutProperty("MFactor", 0, -0.1)  ; shrink major panel
+#i::View_setLayoutProperty("MFactor", 0, +0.1)  ; expand major panel
+
 #+d::Window_toggleDecor()
-#+f::View_toggleFloatingWindow()
+#d::View_toggleFloatingWindow()
 
 #+n::Manager_minimizeWindow()
 #+k::Manager_maximizeWindow()
 
-#?::Manager_getWindowInfo()
-#+i::Manager_getWindowList()
+#/::Manager_getWindowInfo()
+#?::Manager_getWindowList()
 
 ; Window debugging
 #^i::Debug_logViewWindowList()
@@ -449,17 +436,13 @@ Config_UI_saveSession() {
 #m::View_setLayout(2)
 ; #s::View_setLayout(3)
 
-#h::View_setLayoutProperty("MFactor", 0, -0.1)
-#i::View_setLayoutProperty("MFactor", 0, +0.1)
-
-#r::View_setLayoutProperty("Axis", 0, +1, 1)
 ; #^Tab::View_setLayoutProperty("Axis", 0, +1, 2)
 ; #^+Tab::View_setLayoutProperty("Axis", 0, +1, 3)
 #^Up::View_setLayoutProperty("MY", 0, +1)
 #^Down::View_setLayoutProperty("MY", 0, -1)
 #^Right::View_setLayoutProperty("MX", 0, +1)
 #^Left::View_setLayoutProperty("MX", 0, -1)
-; #^Backspace::View_resetTileLayout()
+#Backspace::View_resetTileLayout()
 
 ; View/Tag management
 #q::Monitor_activateView(1)
@@ -468,6 +451,8 @@ Config_UI_saveSession() {
 #^w::Monitor_setWindowTag(2)
 #f::Monitor_activateView(3)
 #^f::Monitor_setWindowTag(3)
+#s::Monitor_activateView(4)
+#^s::Monitor_setWindowTag(4)
 
 ;; Monitor management
 #.::Manager_activateMonitor(0, +1)
